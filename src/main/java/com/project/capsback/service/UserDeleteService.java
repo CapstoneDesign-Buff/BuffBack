@@ -14,7 +14,7 @@ public class UserDeleteService {
         this.userService = userService;
     }
 
-    public void delete(final String userId, final Long sessionUserId) {
+    public void delete(final String userId, final String sessionUserId) {
         matchId(userId, sessionUserId);
         try {
             userService.delete(userId, sessionUserId);
@@ -23,7 +23,7 @@ public class UserDeleteService {
         }
     }
 
-    private void matchId(final String userId, final Long sessionUserId) {
+    private void matchId(final String userId, final String sessionUserId) {
         if (userId == null || !userId.equals(sessionUserId)) {
             throw new UserMismatchException();
         }

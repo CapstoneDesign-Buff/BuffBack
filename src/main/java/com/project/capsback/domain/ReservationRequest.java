@@ -1,19 +1,22 @@
 package com.project.capsback.domain;
 
 import com.project.capsback.entity.Reservation;
+import com.project.capsback.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @NoArgsConstructor
-public class ReservationDto {
-    int boardingTime;
-    String boardingPosition;
-    String dropOffPosition;
+public class ReservationRequest {
+    private int boardingTime;
+    private String boardingPosition;
+    private String dropOffPosition;
 
     @Builder
-    public ReservationDto(int boardingTime,String boardingPosition,String dropOffPosition){
+    public ReservationRequest(int boardingTime, String boardingPosition, String dropOffPosition){
         this.boardingPosition=boardingPosition;
         this.boardingTime=boardingTime;
         this.dropOffPosition=dropOffPosition;
@@ -26,4 +29,6 @@ public class ReservationDto {
                 .dropOffPosition(dropOffPosition)
                 .build();
     }
+
+
 }

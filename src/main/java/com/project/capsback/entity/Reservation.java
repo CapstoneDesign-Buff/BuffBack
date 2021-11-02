@@ -30,7 +30,6 @@ public class Reservation {
 
     @Builder
     public Reservation(int boardingTime,String boardingPosition,String dropOffPosition){
-
         this.boardingTime=boardingTime;
         this.boardingPosition=boardingPosition;
         this.dropOffPosition=dropOffPosition;

@@ -1,5 +1,6 @@
 package com.project.capsback.entity;
 
+import com.project.capsback.domain.UserRequest;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -46,12 +47,15 @@ public class User {
         this.userId=userId;
         this.password=password;
         this.phoneNumber=phoneNumber;
+        this.alarm=true;
+        this.status=1;
     }
 
-    public void update(String password,String phoneNumber){
-        this.password=password;
-        this.phoneNumber=phoneNumber;
+    public void update(UserRequest userRequest){
+        this.password=userRequest.getPassword();
+        this.phoneNumber=userRequest.getPhoneNumber();
     }
+
 
     public void matchPassword(String password) { //비밀번호 확인인
         if (!this.password.equals(password)) {
@@ -59,7 +63,7 @@ public class User {
         }
     }
 
-    public boolean matchId(Long id) { //아이디 확인
+    public boolean matchId(String id) { //아이디 확인
         return (id != null) && (id.equals(getUserId()));
     }
 

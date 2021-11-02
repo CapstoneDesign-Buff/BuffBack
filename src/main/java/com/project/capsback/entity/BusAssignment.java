@@ -18,4 +18,5 @@ public class BusAssignment {
     private int routeNumber;
 
     private int busNumber;
+
 }

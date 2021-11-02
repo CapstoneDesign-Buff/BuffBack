@@ -23,4 +23,11 @@ public class UserVersion implements Serializable{
     @Column(nullable = false)
     private Date updateDate;
 
+    private String userVersion;
+
+    @Builder
+    public UserVersion(String userVersion){
+        this.userVersion=userVersion;
+    }
+
 }

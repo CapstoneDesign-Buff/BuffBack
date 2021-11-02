@@ -1,9 +1,6 @@
 package com.project.capsback.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -21,4 +18,11 @@ public class PrvVersion {
     @UpdateTimestamp
     @Column(nullable = false)
     private Date updateDate;
+
+    @Builder
+    public PrvVersion(String version,Date updateDate){
+        this.version=version;
+        this.updateDate=updateDate;
+    }
+
 }

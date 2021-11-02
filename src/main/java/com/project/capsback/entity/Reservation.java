@@ -1,5 +1,6 @@
 package com.project.capsback.entity;
 
+import com.project.capsback.domain.ReservationRequest;
 import lombok.*;
 import org.hibernate.annotations.GeneratorType;
 
@@ -33,5 +34,11 @@ public class Reservation {
         this.boardingTime=boardingTime;
         this.boardingPosition=boardingPosition;
         this.dropOffPosition=dropOffPosition;
+    }
+
+    public void update(ReservationRequest reservationRequest) {
+        this.boardingTime=reservationRequest.getBoardingTime();
+        this.boardingPosition=reservationRequest.getBoardingPosition();
+        this.dropOffPosition=reservationRequest.getDropOffPosition();
     }
 }

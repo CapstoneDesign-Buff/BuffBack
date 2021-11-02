@@ -1,9 +1,7 @@
 package com.project.capsback.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import com.project.capsback.domain.NoticeRequest;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,4 +23,16 @@ public class Notice {
 
     @Column(nullable = false,columnDefinition = "varchar(5000)")
     private String noticeText;
+
+    @Builder
+    public Notice(Date writeDate,String noticeTitle,String noticeText){
+        this.writeDate=writeDate;
+        this.noticeTitle=noticeTitle;
+        this.noticeText=noticeText;
+    }
+
+    public void update(NoticeRequest noticeRequest){
+        this.noticeTitle=noticeRequest.getNoticeTitle();
+        this.noticeText=noticeRequest.getNoticeText();
+    }
 }

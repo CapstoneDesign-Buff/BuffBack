@@ -14,18 +14,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/reservations")
-public class ReservationApiController {
+public class ReservationController {
 
     private final ReservationService reservationService;
     private final ReservationCreateService reservationCreateService;
 
-    private HttpServletRequest request;
 
-    HttpSession httpSession = request.getSession(false);
-    String userId=httpSession.getAttribute("LoginUser").toString();
 
-    public ReservationApiController(final ReservationService reservationService,
-                                    final ReservationCreateService reservationCreateService){
+    public ReservationController(final ReservationService reservationService,
+                                 final ReservationCreateService reservationCreateService){
         this.reservationService=reservationService;
         this.reservationCreateService=reservationCreateService;
     }
@@ -35,10 +32,20 @@ public class ReservationApiController {
     }
 
     @PostMapping
-    public ResponseEntity<ReservationResponse> createReservation(@RequestBody ReservationRequest reservationRequest){//예약 생성
+    public ResponseEntity<ReservationResponse> createReservation(HttpServletRequest request,@RequestBody ReservationRequest reservationRequest){//예약 생성
         ReservationResponse reservationResponse=reservationCreateService.create(reservationRequest);
-        reservationResponse.setUserId(userId);
-        return ResponseEntity.ok().body(reservationResponse);
+        String userId;
+        HttpSession httpSession = request.getSession(false);
+
+        if(request.getSession(false)!=null) {
+            userId=httpSession.getAttribute("LoginUser").toString();
+            reservationResponse.setUserId(userId);
+            return ResponseEntity.ok().body(reservationResponse);
+        }
+        else
+            return ResponseEntity.badRequest().build();
+
+
     }
 
     @GetMapping("/{id}")

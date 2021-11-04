@@ -7,7 +7,6 @@ import com.project.capsback.entity.Reservation;
 import com.project.capsback.entity.User;
 import com.project.capsback.exception.ReservationDeleteException;
 import com.project.capsback.exception.SignUpException;
-import com.project.capsback.exception.UserDeleteException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

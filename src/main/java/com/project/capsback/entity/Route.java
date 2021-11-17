@@ -24,6 +24,5 @@ public class Route implements Serializable{
 
     @Column(nullable = false)
     private int arrivalTime;
-
 }
 

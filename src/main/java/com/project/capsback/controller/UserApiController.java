@@ -8,7 +8,6 @@ import com.project.capsback.entity.resolver.UserSession;
 import com.project.capsback.service.UserCreateService;
 import com.project.capsback.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -38,8 +37,8 @@ public class UserApiController {
     }
 
     @GetMapping
-    public ResponseEntity<List<User>> showAll(){ //모든 사용자의 정보 조회
-        return ResponseEntity.ok(userService.findByAll());
+    public List<User> showAll(){ //모든 사용자의 정보 조회
+        return userService.findByAll();
     }
 
     @PatchMapping("/{id}")

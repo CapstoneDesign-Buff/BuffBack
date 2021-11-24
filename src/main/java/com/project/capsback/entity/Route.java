@@ -20,10 +20,8 @@ public class Route implements Serializable{
     @Column(nullable = false)
     private Date routeCoverageDate;
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "routeNumber",referencedColumnName = "routeNumber")
-
+    @JoinColumn(name = "routeNumber",referencedColumnName = "routeNumber",nullable = false)
     private BusAssignment busAssignment;
 
     @Column(nullable = false)

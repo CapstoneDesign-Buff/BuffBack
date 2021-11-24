@@ -12,14 +12,16 @@ import java.util.Date;
 @NoArgsConstructor
 public class Route implements Serializable{
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long RouteIdx;
+
     private String busStation;
 
-    @Id
+    @Column(nullable = false)
     private Date routeCoverageDate;
 
-    @Id
     @OneToOne
-    @JoinColumn(name = "routeNumber",referencedColumnName = "routeNumber")
+    @JoinColumn(name = "routeNumber",referencedColumnName = "routeNumber",nullable = false)
     private BusAssignment busAssignment;
 
     @Column(nullable = false)

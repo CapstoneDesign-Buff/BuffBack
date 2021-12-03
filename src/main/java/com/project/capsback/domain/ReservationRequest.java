@@ -1,12 +1,9 @@
 package com.project.capsback.domain;
 
 import com.project.capsback.entity.Reservation;
-import com.project.capsback.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Getter
 @NoArgsConstructor

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -18,7 +20,7 @@ public class ReservationController {
 
     private final ReservationService reservationService;
     private final ReservationCreateService reservationCreateService;
-
+    private LocalDateTime dateTime=LocalDateTime.now();
 
 
     public ReservationController(final ReservationService reservationService,
@@ -36,7 +38,6 @@ public class ReservationController {
         ReservationResponse reservationResponse=reservationCreateService.create(reservationRequest);
         String userId;
         HttpSession httpSession = request.getSession(false);
-
         if(request.getSession(false)!=null) {
             userId=httpSession.getAttribute("LoginUser").toString();
             reservationResponse.setUserId(userId);

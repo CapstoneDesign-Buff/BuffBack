@@ -1,11 +1,13 @@
 package com.project.capsback.entity;
 
+import com.project.capsback.domain.LoginRequest;
 import com.project.capsback.domain.UserRequest;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -42,6 +44,23 @@ public class User {
     @Column(nullable = false)
     private Date updateDateTime;
 
+    // 로그인 내용 추가 부분
+
+    @Column(nullable = false)
+    private boolean loginStatus;
+
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime loginTime;
+
+    @UpdateTimestamp
+    @Column(nullable = false)
+    private LocalDateTime logoutTime;
+
+    @Column(nullable = false)
+    private String loinIp;
+    //////////////////////////////
+
     @Builder
     public User(String userId,String password,String phoneNumber){
         this.userId=userId;
@@ -49,6 +68,7 @@ public class User {
         this.phoneNumber=phoneNumber;
         this.alarm=true;
         this.status=1;
+        this.loginStatus=false;
     }
 
     public void update(UserRequest userRequest){

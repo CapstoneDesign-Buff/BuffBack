@@ -28,12 +28,12 @@ public class ReservationController {
         this.reservationService=reservationService;
         this.reservationCreateService=reservationCreateService;
     }
-    @GetMapping
+    @GetMapping //모든 예약리스트 조회
     public List<Reservation> showAllReservation(){ //전체 사용자의 예약 내역 조회
        return reservationService.findReservationByAll();
     }
 
-    @PostMapping
+    @PostMapping //예약생성
     public ResponseEntity<ReservationResponse> createReservation(HttpServletRequest request,@RequestBody ReservationRequest reservationRequest){//예약 생성
         ReservationResponse reservationResponse=reservationCreateService.create(reservationRequest);
         String userId;
@@ -54,13 +54,13 @@ public class ReservationController {
         return reservationService.findReservationById(id);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}") //예약 업데이트
     public String updateReservation(@PathVariable String id,@RequestBody ReservationRequest reservationRequest){
         reservationService.update(id,reservationRequest);
         return id;
     }
 
-    @DeleteMapping("/{idx}")
+    @DeleteMapping("/{idx}") //예악 Idx를 이용해서 예약삭제
     public ResponseEntity<ReservationResponse> deleteReservation(@PathVariable Long idx){
         reservationService.delete(idx);
         return ResponseEntity.noContent().build();

@@ -13,7 +13,7 @@ public class UserRequest {
     private String phoneNumber;
 
     @Builder
-    public UserRequest(String userId, String password, String phoneNumber){
+    public UserRequest(String userId, String password, String phoneNumber, Boolean loginStatus){
         this.userId=userId;
         this.password=password;
         this.phoneNumber=phoneNumber;
@@ -26,5 +26,6 @@ public class UserRequest {
                 .phoneNumber(phoneNumber)
                 .build();
     }
+
 
 }

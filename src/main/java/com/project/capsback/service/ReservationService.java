@@ -39,8 +39,6 @@ public class ReservationService {
         } catch (Exception e) {
             throw new SignUpException(e.getMessage());
         }
-
-
     }
 
     public List<Reservation> findReservationById(String userId) {
@@ -73,5 +71,4 @@ public class ReservationService {
             throw new ReservationDeleteException();
         }
     }
-
 }
